@@ -1,0 +1,25 @@
+<article class="listing">
+  <a
+    onclick={{action "toggleImageSize"}}
+    class="image {{if this.isWide "wide"}}"
+    role="button"
+  >
+    <img src={{this.rental.image}} alt="">
+    <small>View Larger</small>
+  </a>
+  <div class="details">
+    <h3>{{link-to this.rental.title "rentals.show" this.rental class=this.rental.id}}</h3>
+    <div class="detail owner">
+      <span>Autor:</span> {{this.rental.owner}}
+    </div>
+    <div class="detail type">
+      <span>Tipo:</span> {{rental-property-type this.rental.category}} - {{this.rental.category}}
+    </div>
+    <div class="detail location">
+      <span>Ingredientes:</span> {{this.rental.ingridients}}
+    </div>
+    <div class="detail bedrooms">
+      <span>Preço:</span> {{this.rental.price}}
+    </div>
+  </div>
+</article>

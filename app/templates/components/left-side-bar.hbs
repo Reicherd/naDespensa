@@ -1,0 +1,53 @@
+{{#paper-toolbar class="flex"}}
+  {{#paper-toolbar-tools}}
+    {{#paper-button iconButton=true onClick=(action "openSide")}}
+      {{paper-icon icon="menu"}}
+    {{/paper-button}}
+    <span class="flex"></span>
+    <h2 >
+      naDespensa
+    </h2>
+    <span class="flex"></span>
+    {{#paper-button iconButton=true }}
+    {{#if session.isAuthenticated}}
+      <a {{action 'invalidateSession'}}>Logout</a>
+    {{else}}
+      {{#link-to 'login'}}Login{{/link-to}}
+    {{/if}}
+    {{/paper-button}}
+    {{#paper-button iconButton=true}}
+      {{paper-icon "arrow_drop_down"}}
+    {{/paper-button}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+{{#paper-sidenav-container class="inner-sidenav"}}
+  {{#paper-sidenav
+    class="md-whiteframe-z2"
+    name="left"
+    position="left"
+    open=false
+    lockedOpen=this.openSideBar
+    onToggle=(action (mut this.openSideBar))}}
+    {{#paper-toolbar}}
+      {{#paper-toolbar-tools}}
+        {{#link-to "index"}}
+          <h1>
+            <em>naDespensa</em>
+          </h1>
+        {{/link-to}}
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-content padding=true}}
+      {{#link-to "about" class="menu-about"}}
+        About
+      {{/link-to}}
+      {{#link-to "contact" class="menu-contact"}}
+        Contact
+      {{/link-to}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
+  <div class="body">
+    {{outlet}}
+  </div>
+{{/paper-sidenav-container}}
